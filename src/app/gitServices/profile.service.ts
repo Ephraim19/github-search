@@ -11,7 +11,6 @@ export class ProfileService {
   constructor(private http: HttpClient) {
     this.user = new User('', '', 0, 0, 0);
   }
-
   userRequest() {
     interface ApiResponse {
       login: string;
@@ -31,7 +30,7 @@ export class ProfileService {
             this.user.public_repos = response.public_repos;
             this.user.followers = response.followers;
             this.user.following = response.following;
-
+            console.log(this.user.avatar_url)
             resolve(response);
           },
           (error) => {
