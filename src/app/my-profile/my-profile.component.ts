@@ -13,7 +13,6 @@ export class MyProfileComponent implements OnInit {
   ngOnInit(): void {
     this.profileservice.userRequest()
     this.user = this.profileservice.user
-    console.log(this.user)
   }
   
 }

@@ -1,1 +1,4 @@
-<p>my-repos works!</p>
+<div *ngFor="let repo of repos">
+    <p>{{repo.name}}</p>
+    <p>{{repo.url}}</p>
+</div>
