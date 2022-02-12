@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { User } from '../githubClass/user';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -21,7 +22,7 @@ export class ProfileService {
     }
     let promise = new Promise((resolve, reject) => {
       this.http
-        .get<ApiResponse>('https://api.github.com/users/Ephraim19')
+        .get<ApiResponse>(environment.userUrl)
         .toPromise()
         .then(
           (response: any) => {
