@@ -1,8 +1,27 @@
 <div>
-  <b>{{ user.login }}</b> <br>
-  <b>{{ user.public_repos }}</b> <br>
-  <b>{{ user.followers }}</b> <br>
-  <b>{{ user.following }}</b> <br>
-  {{ user.avatar_url }}
-
+  <div class="header">
+    <h2>Github Search</h2>
+    <p>Search and explore Github profiles</p>
+  </div>
+  <div>
+    <form class="form-inline py-3">
+      <input type="text" class="form-control border border-danger" placeholder="Search a github profile" />
+    </form>
+  </div>
+  <div class="profile">
+    <div class="row">
+      <div class="col">
+        <b>Username: {{ user.login }}</b> <br />
+        <b>Number of public repositories: {{ user.public_repos }}</b> <br />
+        <b>Followers: {{ user.followers }}</b> <br />
+        <b>Following: {{ user.following }}</b> <br />
+      </div>
+      <div class="col">
+        <img src="https://avatars.githubusercontent.com/u/57092540?v=4" />
+      </div>
+    </div>
+  </div>
+  <div>
+    <button type="button" class="btn btn-danger">View repositories</button>
+  </div>
 </div>
