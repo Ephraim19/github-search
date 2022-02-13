@@ -6,12 +6,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
 import { MyReposComponent } from './my-repos/my-repos.component';
+import { SearchProfileDirective } from './search-profile.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     MyProfileComponent,
     MyReposComponent,
+    SearchProfileDirective,
   ],
   imports: [
     BrowserModule,

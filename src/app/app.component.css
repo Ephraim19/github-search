@@ -1,1 +1,15 @@
-@import "~bootstrap/dist/css/bootstrap.css"
+*{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.header {
+    color: black;
+    background-color: rgb(245, 105, 6);
+    padding: 0.5px;
+    text-align: center;
+}
+
+.header p {
+    font-weight: bolder;
+    font-size: large;
+}
