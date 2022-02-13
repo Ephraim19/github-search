@@ -10,6 +10,10 @@ export class MyProfileComponent implements OnInit {
   user !: User
   constructor(private profileservice:ProfileService) { }
 
+  searchProfiles(){
+    console.log('eph')
+  }
+
   ngOnInit(): void {
     this.profileservice.userRequest()
     this.user = this.profileservice.user
