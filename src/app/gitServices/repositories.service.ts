@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
 export class RepositoriesService {
   repos!: Repos[];
   constructor(private http: HttpClient) {
-    this.repos = [new Repos('', '')];
+    this.repos = [new Repos("","")];
   }
   reposRequest() {
     interface ApiResponse {
@@ -24,9 +24,9 @@ export class RepositoriesService {
             for (let i = 0; i < response.length; i++) {
               this.repos[i].name = response[i].name;
               this.repos[i].url = response[i].html_url;
-              console.log(this.repos[i]);
+              console.log(this.repos[i])
+              this.repos.push(new Repos(this.repos[i].name,this.repos[i].url));
 
-              this.repos.push(this.repos[i]);
             }
 
             resolve(response);
