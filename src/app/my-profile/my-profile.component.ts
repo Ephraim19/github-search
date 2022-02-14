@@ -10,7 +10,6 @@ import { HttpClient } from '@angular/common/http';
 })
 export class MyProfileComponent implements OnInit {
   user!: User;
-  //search = new User('', '', 0, 0, 0);
   search!:string
   constructor(
     private profileservice: ProfileService,

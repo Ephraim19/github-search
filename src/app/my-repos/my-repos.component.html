@@ -1,21 +1,14 @@
-<div>
-    <form (ngSubmit)='searchRepos()' class="form-inline py-3"  #goalForm="ngForm">
-      <input
-        type="text"
-        class="form-control border border-danger"
-        placeholder="Search a github profile"
-        id="search"
-        [(ngModel)]="search"
-        name="search"
-      />
-
-      <br />
-      <button type="submit" class="btn btn-danger">
-        Search
-      </button>
-    </form>
+<div *ngFor="let repo of repos" class="card" style="width: 18rem">
+  <div class="card-body">
+    <h5 class="card-title">
+      <p>{{ repo.name }}</p>
+    </h5>
+    <h6 class="card-subtitle mb-2 text-muted">
+      <a href="{{repo.url}}" class="card-link">View repo</a>
+    </h6>
+    <p class="card-text">
+      Some quick example text to build on the card title and make up the bulk of
+      the card's content.
+    </p>
   </div>
-<div *ngFor="let repo of repos">
-    <p>{{repo.name}}</p>
-    <p>{{repo.url}}</p>
 </div>
