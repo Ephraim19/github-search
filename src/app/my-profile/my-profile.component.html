@@ -1,25 +1,31 @@
 <div>
   <div>
-    <form class="form-inline py-3">
+    <form (ngSubmit)='searchProfiles()' class="form-inline py-3"  #goalForm="ngForm">
       <input
         type="text"
         class="form-control border border-danger"
         placeholder="Search a github profile"
+        id="search"
+        [(ngModel)]="search.login"
+        name="search"
       />
-      <br>
-      <button (click)="searchProfiles()" type="button" class="btn btn-danger">Search</button>
+
+      <br />
+      <button type="submit" class="btn btn-danger">
+        Search
+      </button>
     </form>
   </div>
   <div class="profile">
     <div class="row">
       <div class="col">
-        <b>Username: {{ user.login }}</b> <br />
-        <b>Number of public repositories: {{ user.public_repos }}</b> <br />
-        <b>Followers: {{ user.followers }}</b> <br />
-        <b>Following: {{ user.following }}</b> <br />
+        <b> {{ user.login }}</b> <br />
+        <b>{{ user.public_repos }} public repositories </b> <br />
+        <b>{{ user.followers }} Followers </b> <br />
+        <b> {{ user.following }} Following</b> <br />
       </div>
       <div class="col">
-        <img src="https://avatars.githubusercontent.com/u/57092540?v=4" />
+        <img src= {{user.avatar_url}} />
       </div>
     </div>
   </div>
