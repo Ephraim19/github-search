@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Repos } from '../githubClass/repos';
-import { environment } from 'src/environments/environment';
+//import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root',
 })
@@ -18,7 +18,7 @@ export class RepositoriesService {
     }
     let promise = new Promise((resolve, reject) => {
       this.http
-        .get<ApiResponse>(environment.reposUrl)
+        .get<ApiResponse>('https://api.github.com/users/Ephraim19/repos')
         .toPromise()
         .then(
           (response: any) => {
