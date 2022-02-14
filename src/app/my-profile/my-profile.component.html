@@ -1,5 +1,14 @@
 <div>
   <div>
+    <button
+      type="button"
+      onclick="location.href = 'http://localhost:4200/repos';"
+      class="btn btn-outline-danger"
+    >
+      View repositories
+    </button>
+  </div>
+  <div>
     <form (ngSubmit)='searchProfiles()' class="form-inline py-3"  #goalForm="ngForm">
       <input
         type="text"
@@ -29,14 +38,6 @@
       </div>
     </div>
   </div>
-  <div>
-    <button
-      type="button"
-      onclick="location.href = 'http://localhost:4200/repos';"
-      class="btn btn-danger"
-    >
-      View repositories
-    </button>
-  </div>
+
   <app-my-repos></app-my-repos>
 </div>

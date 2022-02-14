@@ -14,7 +14,7 @@ export class MyReposComponent implements OnInit {
   search!:string
 
   constructor(private reposService:RepositoriesService,private http:HttpClient) {
-    this.repos = [new Repos('', '')];
+    this.repos = [new Repos('', '','')];
    }
   searchRepos(){
     interface ApiResponse {
