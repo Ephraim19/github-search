@@ -10,7 +10,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class MyProfileComponent implements OnInit {
   user!: User;
-  search = new User('', '', 0, 0, 0);
+  //search = new User('', '', 0, 0, 0);
+  search!:string
   constructor(
     private profileservice: ProfileService,
     private http: HttpClient
@@ -28,7 +29,7 @@ export class MyProfileComponent implements OnInit {
     }
     let promise = new Promise((resolve, reject) => {
       this.http
-        .get<ApiResponse>('https://api.github.com/users/' + this.search.login)
+        .get<ApiResponse>('https://api.github.com/users/' + this.search)
         .toPromise()
         .then(
           (response: any) => {
