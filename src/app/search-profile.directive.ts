@@ -5,6 +5,8 @@ import { Directive, ElementRef } from '@angular/core';
 })
 export class SearchProfileDirective {
 
-  constructor() { }
+  constructor( private addColor:ElementRef ) {
+    this.addColor.nativeElement.style.color = "red"
+   }
 
 }
