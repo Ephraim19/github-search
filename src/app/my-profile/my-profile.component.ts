@@ -12,7 +12,7 @@ import { Repos } from '../githubClass/repos';
 })
 export class MyProfileComponent implements OnInit {
   user!: User;
-  search: string = 'Ephraim19';
+  search!: string;
   repos!: Repos[];
 
   constructor(
