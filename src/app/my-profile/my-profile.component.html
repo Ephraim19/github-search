@@ -36,5 +36,17 @@
     </div>
   </div>
   <p appSearchProfile class="repos" >Repositories</p>
-  <app-my-repos></app-my-repos>
+  <div *ngFor="let repo of repos" class="card" >
+    <div class="card-body">
+      <h5 class="card-title">
+        <p>{{ repo.name }}</p>
+      </h5>
+      <h6 class="card-subtitle mb-2 text-muted">
+        <a href="{{repo.url}}" class="card-link">View repo</a>
+      </h6>
+      <p class="card-text">
+        {{repo.description}}
+      </p>
+    </div>
+  </div>
 </div>

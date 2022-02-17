@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ProfileService } from '../gitServices/profile.service';
+import { RepositoriesService } from '../gitServices/repositories.service';
 import { User } from '../githubClass/user';
 import { HttpClient } from '@angular/common/http';
+import { Repos } from '../githubClass/repos';
 
 @Component({
   selector: 'app-my-profile',
@@ -10,12 +12,16 @@ import { HttpClient } from '@angular/common/http';
 })
 export class MyProfileComponent implements OnInit {
   user!: User;
-  search!: string;
+  search: string = 'Ephraim19';
+  repos!: Repos[];
+
   constructor(
     private profileservice: ProfileService,
-    private http: HttpClient
+    private http: HttpClient,
+    private reposService:RepositoriesService
   ) {
     this.user = new User('', '', 0, 0, 0);
+    this.repos = [new Repos('', '', '')];
   }
 
   searchProfiles() {
@@ -28,7 +34,7 @@ export class MyProfileComponent implements OnInit {
     }
     let promise = new Promise((resolve, reject) => {
       this.http
-        .get<ApiResponse>('https://api.github.com/users/' + this.search, )
+        .get<ApiResponse>('https://api.github.com/users/' + this.search)
         .toPromise()
         .then(
           (response: any) => {
@@ -37,7 +43,6 @@ export class MyProfileComponent implements OnInit {
             this.user.public_repos = response.public_repos;
             this.user.followers = response.followers;
             this.user.following = response.following;
-            console.log(this.user.avatar_url);
             resolve(response);
           },
           (error) => {
@@ -49,17 +54,49 @@ export class MyProfileComponent implements OnInit {
             this.user.following = 2;
 
             reject(error);
-            console.log();
           }
-          
+        );
+      this.http
+        .get<ApiResponse>('https://api.github.com/users/'+this.search+'/repos')
+        .toPromise()
+        .then(
+          (response: any) => {
+            for (let i = 0; i < response.length; i++) {
+              this.repos[i].name = response[i].name;
+              this.repos[i].url = response[i].html_url;
+              this.repos[i].description = response[i].description;
+              console.log(this.repos[i]);
+              this.repos.push(
+                new Repos(
+                  this.repos[i].name,
+                  this.repos[i].url,
+                  this.repos[i].description
+                )
+              );
+            }
+            resolve(response);
+          },
+          (error) => {
+            this.user.login = 'Ephraim19';
+            this.user.avatar_url =
+              'https://avatars.githubusercontent.com/u/57092540?v=4';
+            this.user.public_repos = 14;
+            this.user.followers = 3;
+            this.user.following = 2;
+
+            reject(error);
+          }
         );
     });
-    
+
     return promise;
   }
-  //'https://api.github.com/users/${Ephraim19}/repos'
+
   ngOnInit(): void {
     this.profileservice.userRequest();
     this.user = this.profileservice.user;
+
+    this.reposService.reposRequest()
+    this.repos = this.reposService.repos
   }
 }

@@ -26,7 +26,6 @@ export class RepositoriesService {
               this.repos[i].name = response[i].name;
               this.repos[i].url = response[i].html_url;
               this.repos[i].description = response[i].description
-              console.log(this.repos[i])
               this.repos.push(new Repos(this.repos[i].name,this.repos[i].url,this.repos[i].description));
 
             }
