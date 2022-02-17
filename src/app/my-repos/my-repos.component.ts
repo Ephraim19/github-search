@@ -16,23 +16,26 @@ export class MyReposComponent implements OnInit {
   constructor(private reposService:RepositoriesService,private http:HttpClient) {
     this.repos = [new Repos('', '','')];
    }
-  searchRepos(){
+
+   searchProfiles() {
     interface ApiResponse {
       name: string;
       url: string;
+      description:string
     }
     let promise = new Promise((resolve, reject) => {
       this.http
-        .get<ApiResponse>('https://api.github.com/users/Ephraim19/' + this.search)
+        .get<ApiResponse>('https://api.github.com/users/marialluare/repos')
         .toPromise()
         .then(
           (response: any) => {
             for (let i = 0; i < response.length; i++) {
               this.repos[i].name = response[i].name;
               this.repos[i].url = response[i].html_url;
-              console.log(this.repos[i]);
+              this.repos[i].description = response[i].description
+              console.log(this.repos[i])
+              this.repos.push(new Repos(this.repos[i].name,this.repos[i].url,this.repos[i].description));
 
-              this.repos.push(this.repos[i]);
             }
 
             resolve(response);
@@ -46,6 +49,7 @@ export class MyReposComponent implements OnInit {
     });
     return promise;
   }
+
   ngOnInit(): void {
     this.reposService.reposRequest()
     this.repos = this.reposService.repos

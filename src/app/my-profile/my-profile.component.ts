@@ -10,14 +10,14 @@ import { HttpClient } from '@angular/common/http';
 })
 export class MyProfileComponent implements OnInit {
   user!: User;
-  search!:string
+  search!: string;
   constructor(
     private profileservice: ProfileService,
     private http: HttpClient
   ) {
     this.user = new User('', '', 0, 0, 0);
   }
-  
+
   searchProfiles() {
     interface ApiResponse {
       login: string;
@@ -28,7 +28,7 @@ export class MyProfileComponent implements OnInit {
     }
     let promise = new Promise((resolve, reject) => {
       this.http
-        .get<ApiResponse>('https://api.github.com/users/' + this.search)
+        .get<ApiResponse>('https://api.github.com/users/' + this.search, )
         .toPromise()
         .then(
           (response: any) => {
@@ -49,13 +49,15 @@ export class MyProfileComponent implements OnInit {
             this.user.following = 2;
 
             reject(error);
-            console.log()
+            console.log();
           }
+          
         );
     });
+    
     return promise;
   }
-
+  //'https://api.github.com/users/${Ephraim19}/repos'
   ngOnInit(): void {
     this.profileservice.userRequest();
     this.user = this.profileservice.user;

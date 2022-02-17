@@ -10,8 +10,27 @@
     <div class="header">
       <h2>Github Search</h2>
       <p>Search and explore Github profiles and repositories</p>
+        <button
+        type="button"
+        onclick="location.href = 'http://localhost:4200/repos';"
+        class="btn btn-danger"
+      >
+          View repositories
+        </button>
+        <button
+        type="button"
+        onclick="location.href = 'http://localhost:4200';"
+        class="btn btn-danger"
+      >
+          Home
+        </button>
     </div>
     <router-outlet></router-outlet>
+    <div class="header">
+      <p>Thank you</p>
+      <p>Contact: Machayoephraim@gmail.com</p>
+      <p>copyright 2022</p>
+    </div>
   </body>
 </html>
 

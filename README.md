@@ -13,7 +13,7 @@ https://ephraim19.github.io/github-search/
 ## Technologies used
 Html
 Css
-Javascript
+Typescript
 Angular
 bootstrap
 git
